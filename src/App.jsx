@@ -7,8 +7,9 @@ import './App.css'
  */
 export const App = () => {
   return (
-    <div>
-      <h2>Hello, world!</h2>
-    </div>
+    <header>
+      Dogアプリ<p>犬の画像を表示するサイトです</p>
+      <img src="./src/dog.jpg" />
+    </header>
   )
 }
