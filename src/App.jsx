@@ -11,10 +11,20 @@ export const App = () => {
     'https://images.dog.ceo/breeds/spaniel-brittany/n02101388_6057.jpg',
   )
   return (
-    <header>
+    <div>
       Dogアプリ<p>犬の画像を表示するサイトです</p>
-      {/* <img src="./src/dog.jpg"   /> */}
       <img src={dogUrl} />
-    </header>
+      <div>
+        <button
+          onClick={() =>
+            setDogUrl(
+              'https://images.dog.ceo/breeds/hound-english/n02089973_1132.jpg',
+            )
+          }
+        >
+          更新
+        </button>
+      </div>
+    </div>
   )
 }
