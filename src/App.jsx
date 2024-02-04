@@ -15,6 +15,7 @@ export const App = () => {
     <div>
       <Header />
       <Description />
+      <DogListContainer />
     </div>
   )
 }
