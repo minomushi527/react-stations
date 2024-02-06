@@ -1,9 +1,11 @@
+import './App.css'
+
 export const DogImage = props => {
   return (
-    <div>
+    <li className="dogimages">
       {console.log('url:', props.imageUrl)}
-      <img src={props.imageUrl} alt="dogs" />
-    </div>
+      <img src={props.imageUrl} alt="dogs" className="dogs" />
+    </li>
   )
 }
 
