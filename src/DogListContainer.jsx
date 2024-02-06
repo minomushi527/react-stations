@@ -1,11 +1,12 @@
 import { useEffect, useState, useCallback } from 'react'
 import BreedsSelect from './BreedsSelect'
+import DogImage from './DogImage'
 
 export const DogListContainer = () => {
   //犬種リストを保存
   const [breeds, setBreeds] = useState([])
   //選択した犬種を保存
-  const [selectedBreed, setselectedBreed] = useState('')
+  const [selectedBreed, setselectedBreed] = useState('affenpinscher')
 
   const [pictureBreed, setpictureBreed] = useState([])
   const a = 1
@@ -27,22 +28,32 @@ export const DogListContainer = () => {
     let texturl = 'https://dog.ceo/api/breed/'
     texturl += selectedBreed
     texturl += '/images/random/12'
-    // console.log('dogpic : ' + texturl)
+    console.log('dogpic : ' + texturl)
     fetch(texturl)
       .then(response => {
         return response.json()
       })
       .then(data => {
         setpictureBreed(data.message)
+        console.log(pictureBreed)
       })
   }
 
   const breedchange = useCallback(e => {
-    console.log('e.target:', e.target.value)
     const selected = e.target.value
+    console.log('e.target:', e.target.value)
     setselectedBreed(`${selected}`)
     // console.log('selected', selectedBreed)
   }, [])
+
+  // const dogpiclist = () => {
+  //   pictureBreed.map(list => <DogImage imageUrl={list} />)
+  // }
+
+  const dog_picture = () => {
+    dogpic()
+    // dogpiclist()
+  }
 
   return (
     <div>
@@ -53,9 +64,12 @@ export const DogListContainer = () => {
         breedchange={breedchange}
         a={a}
       />
-      <button className="kousinbutton" onClick={dogpic}>
+      <button className="kousinbutton" onClick={dog_picture}>
         表示
       </button>
+      {pictureBreed.map((list, key) => (
+        <DogImage imageUrl={list} key={key} />
+      ))}
     </div>
   )
 }

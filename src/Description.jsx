@@ -20,7 +20,7 @@ export const Description = () => {
   return (
     <div>
       <p>犬の画像を表示するサイトです</p>
-      <DogImage imageUrl={dogUrl} />
+      <DogImage imageUrl={dogUrl} key={1} />
       <div>
         <button className="dogbutton" onClick={response}>
           更新
