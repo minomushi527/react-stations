@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import BreedsSelect from './BreedsSelect'
 
 export const DogListContainer = () => {
@@ -21,13 +21,13 @@ export const DogListContainer = () => {
       })
   }, [])
 
-  console.log('first breeds = ' + breeds)
+  // console.log('first breeds = ' + breeds)
 
   const dogpic = () => {
     let texturl = 'https://dog.ceo/api/breed/'
     texturl += selectedBreed
     texturl += '/images/random/12'
-    console.log('dogpic : ' + texturl)
+    // console.log('dogpic : ' + texturl)
     fetch(texturl)
       .then(response => {
         return response.json()
@@ -37,11 +37,12 @@ export const DogListContainer = () => {
       })
   }
 
-  const breedchange = e => {
-    console.log('selected :')
-    console.log(selectedBreed)
-    setselectedBreed(e.target.value)
-  }
+  const breedchange = useCallback(e => {
+    console.log('e.target:', e.target.value)
+    const selected = e.target.value
+    setselectedBreed(`${selected}`)
+    // console.log('selected', selectedBreed)
+  }, [])
 
   return (
     <div>
